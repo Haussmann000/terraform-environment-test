@@ -1,12 +1,12 @@
 config {
-  module     = false
+  module = false
 }
 
 plugin "aws" {
   deep_check = true
-  enabled = true
-  version = "0.15.0"
-  source  = "github.com/terraform-linters/tflint-ruleset-aws"
+  enabled    = true
+  version    = "0.15.0"
+  source     = "github.com/terraform-linters/tflint-ruleset-aws"
 }
 
 
