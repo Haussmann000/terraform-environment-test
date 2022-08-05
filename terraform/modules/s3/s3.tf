@@ -3,36 +3,10 @@
 # @see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket
 # --------------------------------------------------------------------------------
 
+# https://registry.terraform.io/modules/terraform-aws-modules/s3-bucket/aws/3.3.0
 module "s3" {
-  source             = "../../../../resources/s3/bucket_object"
+  source             = "terraform-aws-modules/s3-bucket/aws"
   acl                = "private"
-  bucket             = "${var.tags.service}-${var.tags.env}-postgres-dump-bucket-1"
+  bucket             = "${var.tags.service}-${var.tags.env}-test-bucket-1"
   tags               = var.tags
-  # --------------------------------------------------------------------------------
-  # ロギング設定
-  # --------------------------------------------------------------------------------
-
-  logging = [
-      {
-        target_bucket = "${var.tags.service}-bucket-access-logs"
-        target_prefix = "${var.tags.env}/"
-      }
-  ]
-  # --------------------------------------------------------------------------------
-  # サーバ側の暗号化設定
-  # --------------------------------------------------------------------------------
-
-  server_side_encryption_configuration = [
-    {
-      rule  = [
-        {
-          apply_server_side_encryption_by_default = [
-            {
-              sse_algorithm = "AES256"
-            }
-          ]
-        }
-      ]  
-    }
-  ]
 }
