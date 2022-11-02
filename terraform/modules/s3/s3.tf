@@ -5,9 +5,9 @@
 
 # https://registry.terraform.io/modules/terraform-aws-modules/s3-bucket/aws/3.3.0
 module "s3" {
-  source             = "terraform-aws-modules/s3-bucket/aws"
-  acl                = "private"
-  count              = 2
-  bucket             = "${var.tags.service}-${var.tags.env}-test-bucket-${count.index}"
-  tags               = var.tags
+  source = "terraform-aws-modules/s3-bucket/aws"
+  acl    = "private"
+  count  = 2
+  bucket = "${var.tags.service}-${var.tags.env}-test-bucket-${count.index}"
+  tags   = var.tags
 }
