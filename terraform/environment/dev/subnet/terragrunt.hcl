@@ -29,3 +29,4 @@ inputs = {
   availability_zones = local.availability_zones
   vpc_id             = dependency.vpc.outputs.vpc_id
 }
+
