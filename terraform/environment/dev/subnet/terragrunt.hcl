@@ -19,8 +19,8 @@ locals {
 }
 
 dependency "vpc" {
-  config_path     = "../vpc"
-  mock_outputs    = {
+  config_path = "../vpc"
+  mock_outputs = {
     vpc_id = "vpc-01234567890abcdef"
   }
 }
