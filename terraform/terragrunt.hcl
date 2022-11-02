@@ -8,6 +8,7 @@ locals {
   environment_vars = read_terragrunt_config(find_in_parent_folders("env.hcl"))
   env              = local.environment_vars.locals.env
   aws_account_id   = local.environment_vars.locals.aws_account_id
+  vpc_cidr         = "10.1.0.0/16"
 }
 
 # --------------------------------------------------------------------------------
@@ -60,4 +61,5 @@ inputs = {
     env     = local.env
     service = local.service
   }
+  vpc_cidr = local.vpc_cidr
 }
