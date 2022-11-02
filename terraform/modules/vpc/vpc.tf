@@ -6,3 +6,4 @@ module "vpc" {
   name                 = "${var.tags.service}-${var.tags.env}"
   cidr                 = var.vpc_cidr
 }
+
