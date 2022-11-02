@@ -3,11 +3,11 @@
 # --------------------------------------------------------------------------------
 
 locals {
-  aws_account_id   = "746070202409"
   aws_region_id    = "ap-northeast-1"
   service          = "terraform-environment-test"
   environment_vars = read_terragrunt_config(find_in_parent_folders("env.hcl"))
   env              = local.environment_vars.locals.env
+  aws_account_id   = local.environment_vars.locals.aws_account_id
 }
 
 # --------------------------------------------------------------------------------

@@ -7,6 +7,6 @@
 module "s3" {
   source             = "terraform-aws-modules/s3-bucket/aws"
   acl                = "private"
-  bucket             = "${var.tags.service}-${var.tags.env}-test-bucket-1"
+  bucket             = "${var.tags.service}-${var.tags.env}-test-bucket-${count.index}"
   tags               = var.tags
 }
