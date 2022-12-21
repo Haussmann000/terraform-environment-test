@@ -29,11 +29,15 @@ jobs:
           curl -Ls "$URL" -o /tmp/terragrunt
           chmod +x /tmp/terragrunt
           /tmp/terragrunt hclfmt
-      - name: commit and push
-        # https://github.com/EndBug/add-and-commit/releases/tag/v7.4.0 相当
-        uses: EndBug/add-and-commit@d77762158d703e60c60cf5baa4de52697d1414a3
-        with:
-          message: "style: terraform fmt by GitHub Action"
-          committer_name: "github-actions[bot]"
-          committer_email: "41898282+github-actions[bot]@users.noreply.github.com"
-          push: true 
+      # - name: commit and push
+      #   # https://github.com/EndBug/add-and-commit/releases/tag/v7.4.0 相当
+      #   uses: EndBug/add-and-commit@d77762158d703e60c60cf5baa4de52697d1414a3
+      #   with:
+      #     message: "style: terraform fmt by GitHub Action"
+      #     committer_name: "github-actions[bot]"
+      #     committer_email: "41898282+github-actions[bot]@users.noreply.github.com"
+      #     push: true
+      - name: Terraform Command Test
+        run: |
+          echo $(ls terrafome/modules/ | xargs cd && terragrunt plan)
+
