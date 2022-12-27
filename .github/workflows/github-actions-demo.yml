@@ -45,8 +45,6 @@ jobs:
           echo "$AWS_ACCESS_KEY_ID" >> $GITHUB_ENV
           echo "$AWS_ACCESS_KEY_ID" >> $GITHUB_ENV
           echo "$AWS_SECRET_ACCESS_KEY" >> $GITHUB_ENV
-          echo $GITHUB_ENV
-          cat /var/run/act/workflow/envs.txt
           cd terraform/environment/dev
-          # terragrunt run-all plan
+          terragrunt run-all plan
           
