@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
     inputs:
       subcommand:
-        type: string
+        type: choice
         required: true
         description: 'terragrunt subcommand'
 jobs:
