@@ -37,8 +37,6 @@ jobs:
           echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
       - name: Terragrunt plan
         run: |
-          echo "$AWS_ACCESS_KEY_ID" >> $GITHUB_ENV
-          echo "$AWS_SECRET_ACCESS_KEY" >> $GITHUB_ENV
           cd terraform/environment/dev
           terragrunt run-all plan
           
