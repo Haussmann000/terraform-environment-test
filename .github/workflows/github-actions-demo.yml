@@ -8,6 +8,7 @@ on:
       - '**.tf'
       - '**.tfvars'
       - '**.hcl'
+      - '**.yml'
 jobs:
   format:
     runs-on: ubuntu-20.04
