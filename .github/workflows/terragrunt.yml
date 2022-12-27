@@ -1,2 +1,0 @@
-- name: Terragrunt GitHub Actions
-  uses: the-commons-project/terragrunt-github-actions@1.0.6
