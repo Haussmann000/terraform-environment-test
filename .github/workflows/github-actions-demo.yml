@@ -23,5 +23,5 @@ jobs:
       - name: Terragrunt GitHub Actions
         # uses: the-commons-project/terragrunt-github-actions@1.0.6
         run: |
-          echo ${{ github.event.inputs.subcommand }}
+          echo "${{ github.event.inputs.subcommand }}"
 
