@@ -13,16 +13,12 @@ on:
 env:
   TERRAFORM_VERSION: 1.3.3
   TERRAGRUNT_VERSION: v0.39.2
-
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 jobs:
   terragrunt-apply-all-staging:
     # if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_REGION: ca-central-1
-      TF_VAR_metrics_token: ${{ secrets.TF_VAR_metrics_token }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -39,3 +35,18 @@ jobs:
           wget -O bin/terragrunt https://github.com/gruntwork-io/terragrunt/releases/download/$TERRAGRUNT_VERSION/terragrunt_linux_amd64
           chmod +x bin/terragrunt
           echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
+      - name: Terragrunt plan
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ap-northeast-1
+          # TF_VAR_metrics_token: ${{ secrets.TF_VAR_metrics_token }}
+        run: |
+          echo "$AWS_ACCESS_KEY_ID" >> $GITHUB_ENV
+          echo "$AWS_ACCESS_KEY_ID" >> $GITHUB_ENV
+          echo "$AWS_SECRET_ACCESS_KEY" >> $GITHUB_ENV
+          echo $GITHUB_ENV
+          cat /var/run/act/workflow/envs.txt
+          cd terraform/environment/dev
+          # terragrunt run-all plan
+          
