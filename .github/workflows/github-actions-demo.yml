@@ -9,8 +9,12 @@ on:
       - '**.tfvars'
       - '**.hcl'
       - '**.yml'
-env:
-  INPUT_TF_ACTIONS_SUBCOMMAND: plan
+  workflow_dispatch:
+    inputs:
+      subcommand:
+        type: string
+        required: true
+        description: 'terragrunt subcommand'
 jobs:
   format:
     runs-on: ubuntu-20.04
@@ -18,4 +22,6 @@ jobs:
     steps:
       - name: Terragrunt GitHub Actions
         uses: the-commons-project/terragrunt-github-actions@1.0.6
+        env:
+          INPUT_TF_ACTIONS_SUBCOMMAND: ${{ github.event.inputs.subcommand }}
 
