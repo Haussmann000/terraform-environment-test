@@ -1,14 +1,14 @@
 name: Check terraform file formatting and format
 on:
-  push:
-    branches:
-      - '**'        # matches every branch
-      - '!main'     # excludes main
-    paths:
-      - '**.tf'
-      - '**.tfvars'
-      - '**.hcl'
-      - '**.yml'
+  # push:
+  #   branches:
+  #     - '**'        # matches every branch
+  #     - '!main'     # excludes main
+  #   paths:
+  #     - '**.tf'
+  #     - '**.tfvars'
+  #     - '**.hcl'
+  #     - '**.yml'
   workflow_dispatch:
     inputs:
       subcommand:
